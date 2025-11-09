@@ -1597,7 +1597,8 @@ function Bracket:Window(Window)
 					"Delete",
 					"Unknown",
 					"Backquote",
-				}, "table")
+				}, "table"),
+                Keybind.Processed = GetType(Keybind.Value, false, "string")
 				Window.Elements[#Window.Elements + 1] = Keybind
 				Window.Flags[Keybind.Flag] = Keybind.Value
 
