@@ -1580,7 +1580,7 @@ function Bracket:Window(Window)
 				Keybind = GetType(Keybind, {}, "table")
 				Keybind.Name = GetType(Keybind.Name, "Keybind", "string")
 				Keybind.Flag = GetType(Keybind.Flag, Keybind.Name, "string")
-
+                Keybind.Processed = GetType(Keybind.Processed, false, "string")
 				Keybind.Value = GetType(Keybind.Value, "NONE", "string")
 				Keybind.Mouse = GetType(Keybind.Mouse, false, "boolean")
 				Keybind.Callback = GetType(Keybind.Callback, function() end, "function")
@@ -1598,7 +1598,6 @@ function Bracket:Window(Window)
 					"Unknown",
 					"Backquote",
 				}, "table"),
-                Keybind.Processed = GetType(Keybind.Processed, false, "string")
 				Window.Elements[#Window.Elements + 1] = Keybind
 				Window.Flags[Keybind.Flag] = Keybind.Value
 
