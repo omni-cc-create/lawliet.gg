@@ -835,7 +835,7 @@ local function InitKeybind(Parent, ScreenAsset, Window, Keybind)
 		KeybindAsset.Value.Size = UDim2.new(0, KeybindAsset.Value.TextBounds.X, 1, 0)
 		KeybindAsset.Title.Size = UDim2.new(1, -KeybindAsset.Value.Size.X.Offset, 1, 0)
 	end)
-	UserInputService.InputBegan:Connect(function(Input)
+	UserInputService.InputBegan:Connect(function(Input, GameProcessed)
 		local Key = tostring(Input.KeyCode):gsub("Enum.KeyCode.", "")
 		if Keybind.Processed and GameProcessed then
 			return
