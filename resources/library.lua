@@ -1321,6 +1321,7 @@ function Bracket:Window(Window)
 	Window.Flags = {}
 
 	local WindowAsset = InitWindow(Bracket.ScreenAsset, Window)
+	print("Oh yea window")
 	function Window:Tab(Tab)
 		Tab = GetType(Tab, {}, "table")
 		Tab.Name = GetType(Tab.Name, "Tab", "string")
