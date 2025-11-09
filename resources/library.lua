@@ -559,7 +559,7 @@ local function InitToggle(Parent, ScreenAsset, Window, Toggle)
 	function Toggle:Keybind(Keybind)
 		Keybind = GetType(Keybind, {}, "table")
 		Keybind.Flag = GetType(Keybind.Flag, Toggle.Flag .. "/Keybind", "string")
-		Keybind.Processed = GetType(Keybind.Processed, false, "string")
+		Keybind.Processed = GetType(Keybind.Processed, false, "boolean")
 		Keybind.Value = GetType(Keybind.Value, "NONE", "string")
 		Keybind.Callback = GetType(Keybind.Callback, function() end, "function")
 		Keybind.Blacklist = GetType(
@@ -585,10 +585,10 @@ local function InitToggle(Parent, ScreenAsset, Window, Toggle)
 		end)
 
 		UserInputService.InputBegan:Connect(function(Input, GameProcessed)
-			local Key = tostring(Input.KeyCode):gsub("Enum.KeyCode.", "")
 			if Keybind.Processed and GameProcessed then
 				return warn("doesnt allow processed")
 			end
+			local Key = tostring(Input.KeyCode):gsub("Enum.KeyCode.", "")
 
 			if Keybind.WaitingForBind and Input.UserInputType == Enum.UserInputType.Keyboard then
 				if not table.find(Keybind.Blacklist, Key) then
@@ -836,10 +836,11 @@ local function InitKeybind(Parent, ScreenAsset, Window, Keybind)
 		KeybindAsset.Title.Size = UDim2.new(1, -KeybindAsset.Value.Size.X.Offset, 1, 0)
 	end)
 	UserInputService.InputBegan:Connect(function(Input, GameProcessed)
-		local Key = tostring(Input.KeyCode):gsub("Enum.KeyCode.", "")
 		if Keybind.Processed and GameProcessed then
 			return warn("doesnt allow processed")
 		end
+		local Key = tostring(Input.KeyCode):gsub("Enum.KeyCode.", "")
+
 		if Keybind.WaitingForBind and Input.UserInputType == Enum.UserInputType.Keyboard then
 			if not table.find(Keybind.Blacklist, Key) then
 				KeybindAsset.Value.Text = "[ " .. Key .. " ]"
@@ -1321,7 +1322,7 @@ function Bracket:Window(Window)
 	Window.Flags = {}
 
 	local WindowAsset = InitWindow(Bracket.ScreenAsset, Window)
-	print("Oh yea window")
+	print("Oh yeah window")
 	function Window:Tab(Tab)
 		Tab = GetType(Tab, {}, "table")
 		Tab.Name = GetType(Tab.Name, "Tab", "string")
