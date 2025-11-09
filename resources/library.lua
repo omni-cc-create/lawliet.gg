@@ -1475,11 +1475,7 @@ function Bracket:Window(Window)
 			Keybind.Value = GetType(Keybind.Value, "NONE", "string")
 			Keybind.Mouse = GetType(Keybind.Mouse, false, "boolean")
 			Keybind.Callback = GetType(Keybind.Callback, function() end, "function")
-			Keybind.Blacklist = GetType(
-				Keybind.Blacklist,
-				{ "W", "A", "S", "D", "Slash", "Tab", "Backspace", "Escape", "Space", "Delete", "Unknown", "Backquote" },
-				"table"
-			)
+			Keybind.Blacklist = GetType(Keybind.Blacklist, { "W", "A", "S", "D", "Unknown", "Backquote" }, "table")
 			Window.Elements[#Window.Elements + 1] = Keybind
 			Window.Flags[Keybind.Flag] = Keybind.Value
 
