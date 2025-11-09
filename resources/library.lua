@@ -587,7 +587,7 @@ local function InitToggle(Parent, ScreenAsset, Window, Toggle)
 		UserInputService.InputBegan:Connect(function(Input, GameProcessed)
 			local Key = tostring(Input.KeyCode):gsub("Enum.KeyCode.", "")
 			if Keybind.Processed and GameProcessed then
-				return
+				return warn("doesnt allow processed")
 			end
 
 			if Keybind.WaitingForBind and Input.UserInputType == Enum.UserInputType.Keyboard then
@@ -838,7 +838,7 @@ local function InitKeybind(Parent, ScreenAsset, Window, Keybind)
 	UserInputService.InputBegan:Connect(function(Input, GameProcessed)
 		local Key = tostring(Input.KeyCode):gsub("Enum.KeyCode.", "")
 		if Keybind.Processed and GameProcessed then
-			return
+			return warn("doesnt allow processed")
 		end
 		if Keybind.WaitingForBind and Input.UserInputType == Enum.UserInputType.Keyboard then
 			if not table.find(Keybind.Blacklist, Key) then
