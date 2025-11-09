@@ -586,7 +586,7 @@ local function InitToggle(Parent, ScreenAsset, Window, Toggle)
 
 		UserInputService.InputBegan:Connect(function(Input, GameProcessed)
 			if Keybind.Processed and GameProcessed then
-				return warn("doesnt allow processed")
+				return
 			end
 			local Key = tostring(Input.KeyCode):gsub("Enum.KeyCode.", "")
 
@@ -837,7 +837,7 @@ local function InitKeybind(Parent, ScreenAsset, Window, Keybind)
 	end)
 	UserInputService.InputBegan:Connect(function(Input, GameProcessed)
 		if Keybind.Processed and GameProcessed then
-			return warn("doesnt allow processed")
+			return
 		end
 		local Key = tostring(Input.KeyCode):gsub("Enum.KeyCode.", "")
 
@@ -1322,7 +1322,6 @@ function Bracket:Window(Window)
 	Window.Flags = {}
 
 	local WindowAsset = InitWindow(Bracket.ScreenAsset, Window)
-	print("Oh yeah window")
 	function Window:Tab(Tab)
 		Tab = GetType(Tab, {}, "table")
 		Tab.Name = GetType(Tab.Name, "Tab", "string")
